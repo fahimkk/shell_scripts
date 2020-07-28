@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+for i in $(ls)
+do
+	if [ -f $i ] && `grep -q linux $i` 			# -f - to check wthether it's a file or not. -q to quiet the output of grep
+	then
+		if [ ! -d linux_files ]					# -d to check whether there is an existing directory,ie if it runs multiple times
+		then
+			mkdir ./linux_files
+		fi
+		mv $i linux_files
+	fi
+done

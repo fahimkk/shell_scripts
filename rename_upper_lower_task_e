@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for i in $(ls)
+do
+	if [ -f $i ]												#-f - check wether it's a file or not. this wont work with directories  
+	then
+		if `echo $i | grep -lq [A-Z]`							# only want to rename the files name which have upper case in it.
+		then															# -l - for matching atleast one.
+			mv $i `echo $i | tr [:upper:] [:lower:]`
+		fi
+	fi
+done
